@@ -1,0 +1,26 @@
+[
+  {
+    "id": 101,
+    "user_id": 177,
+    "amount": 67.00,
+    "description": "The bite of '87",
+    "date": "2025-09-30T09:30:00Z",
+    "status": "approved"
+  },
+  {
+    "id": 102,
+    "user_id": 2,
+    "amount": 45.50,
+    "description": "Taxi fare",
+    "date": "2025-11-13T14:00:00Z",
+    "status": "pending"
+  },
+  {
+    "id": 103,
+    "user_id": 2,
+    "amount": 89.99,
+    "description": "Office supplies",
+    "date": "2025-10-30T09:30:00Z",
+    "status": "approved"
+  }
+]
