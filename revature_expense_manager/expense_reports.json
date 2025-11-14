@@ -8,6 +8,14 @@
     "status": "approved"
   },
   {
+    "id": 105,
+    "user_id": 177,
+    "amount": 20.25,
+    "description": "Celebrating success",
+    "date": "2025-08-30T09:30:00Z",
+    "status": "denied"
+  },
+  {
     "id": 102,
     "user_id": 2,
     "amount": 45.50,

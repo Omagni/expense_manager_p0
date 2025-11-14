@@ -8,7 +8,13 @@ import auth, view_history
 username = input("Username: ")
 password = input("Password: ")
 
-user = auth.login(username, password) # save the user into the user variable. Can access anywhere nowb
+user = auth.login(username, password) # save the user into the user variable. Can access anywhere now
+
+if user is None:
+    print("Invalid. Exiting.")
+    exit()
+
+
 
 # view report
 view_history.view_expense_report(user)
