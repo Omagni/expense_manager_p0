@@ -4,12 +4,12 @@ from data_store import load_users
 users = load_users()
 
 def login(username, password):
+
     for user in users:
         if user["username"].lower() == username.lower() and user["password"] == password:
             print("User logged in")
             return user # we return the entire user here
         else:
-            print("User not found")
             break
 
     # so we have the user authenticated

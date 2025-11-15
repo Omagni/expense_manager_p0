@@ -2,7 +2,7 @@
   {
     "id": 101,
     "user_id": 177,
-    "amount": 67.00,
+    "amount": 67.0,
     "description": "The bite of '87",
     "date": "2025-09-30T09:30:00Z",
     "status": "approved"
@@ -15,10 +15,18 @@
     "date": "2025-08-30T09:30:00Z",
     "status": "denied"
   },
+    {
+    "id": 111,
+    "user_id": 177,
+    "amount": 150.99,
+    "description": "Udemy Course",
+    "date": "2025-07-30T09:30:00Z",
+    "status": "pending"
+  },
   {
     "id": 102,
     "user_id": 2,
-    "amount": 45.50,
+    "amount": 45.5,
     "description": "Taxi fare",
     "date": "2025-11-13T14:00:00Z",
     "status": "pending"
