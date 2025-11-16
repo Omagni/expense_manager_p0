@@ -29,6 +29,5 @@ def view_all_reports(user):
         print("The list is empty")
         return
 
-
     df = pd.DataFrame(report_list)
     print(df.to_string(index=False))

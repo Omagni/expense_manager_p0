@@ -48,11 +48,11 @@
     "status": "pending"
   },
   {
-    "id": 106,
+    "id": 108,
     "user_id": 177,
-    "amount": "19929",
-    "description": "testinggggg",
-    "date": "2025-11-16T03:52:31Z",
+    "amount": 15.23,
+    "description": "i am editing this",
+    "date": "2025-11-16T04:04:22Z",
     "status": "pending"
   }
 ]

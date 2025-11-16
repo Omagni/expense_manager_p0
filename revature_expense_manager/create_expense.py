@@ -9,8 +9,6 @@
 from datetime import datetime, timezone
 from data_store import load_expenses, load_users, save_expenses
 
-
-
 def generate_expense(user):
     expenses = load_expenses()
     users = load_users()
@@ -23,7 +21,8 @@ def generate_expense(user):
             expense_id = id
         expense_id += 1
 
-    amount = input("Please enter the dollar amount: ")
+    amount = float(input("Please enter the dollar amount: "))
+    amount = f"{amount:.2f}"
     desc = input("Please enter the description of the expense: ")
     date = datetime.now(timezone.utc)
     formatted_date = date.strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -43,4 +42,3 @@ def generate_expense(user):
 
     data.append(new_entry)
     save_expenses(data)
-

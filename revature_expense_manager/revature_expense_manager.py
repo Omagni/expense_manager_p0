@@ -5,7 +5,6 @@ import auth, view_history, create_expense, manage_reports
 print("Welcome to the Revature Expense Manager!")
 print("             Login Page")
 
-
 # login page
 user_logged_in = False
 while(user_logged_in == False):
@@ -20,15 +19,6 @@ while(user_logged_in == False):
 
     if user:
         user_logged_in = True
-
-# view report
-    #view_history.view_expense_report(user)
-# create new report
-    #create_expense.generate_expense(user)
-#view status of all reports
-#edit a pending report
-#delete a pending report
-
 
 def print_menu():
     print("\n" * 10)
@@ -101,6 +91,5 @@ def app():
             else:
                 print("Invalid input. Enter a value between 1-2")
                 continue
-
 
 app()
