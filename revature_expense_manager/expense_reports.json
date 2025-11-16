@@ -15,7 +15,7 @@
     "date": "2025-08-30T09:30:00Z",
     "status": "denied"
   },
-    {
+  {
     "id": 111,
     "user_id": 177,
     "amount": 150.99,
@@ -38,5 +38,21 @@
     "description": "Office supplies",
     "date": "2025-10-30T09:30:00Z",
     "status": "approved"
+  },
+  {
+    "id": 105,
+    "user_id": 177,
+    "amount": "65.14",
+    "description": "Ultimate bowling",
+    "date": "2025-11-16T03:49:42Z",
+    "status": "pending"
+  },
+  {
+    "id": 106,
+    "user_id": 177,
+    "amount": "19929",
+    "description": "testinggggg",
+    "date": "2025-11-16T03:52:31Z",
+    "status": "pending"
   }
 ]

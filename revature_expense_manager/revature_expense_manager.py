@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-import auth, view_history, create_expense
+import auth, view_history, create_expense, manage_reports
 
 print("Welcome to the Revature Expense Manager!")
 print("             Login Page")
@@ -39,6 +39,7 @@ def print_menu():
     print("4. Edit a pending report")
     print("5. Delete a pending report")
     print("6. Logout")
+    print("\n")
 
 def app():
     while True:
@@ -65,6 +66,16 @@ def app():
             print("Status of all reports: ")
             view_history.view_all_reports(user)
 
+        elif(user_selection == 4):
+            print("\n" * 5)
+            print('Edit your pending report: ')
+            manage_reports.edit_report(user)
+
+        elif(user_selection == 5):
+            print("\n" * 5)
+            print("Delete your pending report: ")
+            manage_reports.delete_report(user)
+
         elif(user_selection == 6):
             print("Logging out and exiting app...")
             exit()
@@ -75,13 +86,12 @@ def app():
 
         while True:
             try:
-                print("1. Back to list view")
+                print("\n1. Back to list view")
                 print("2. Logout and exit")
+                user_selection = int(input("Enter your choice: "))
             except ValueError:
-                print("Input Error. Please enter 1 or 2")
+                print("!!!Input Error. Please enter 1 or 2!!!")
                 continue
-
-            user_selection = int(input("Enter your choice: "))
 
             if(user_selection == 1):
                 break

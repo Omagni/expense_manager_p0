@@ -8,10 +8,12 @@
 
 from datetime import datetime, timezone
 from data_store import load_expenses, load_users, save_expenses
-users = load_users()
-expenses = load_expenses()
+
+
 
 def generate_expense(user):
+    expenses = load_expenses()
+    users = load_users()
 
     user_id = user["id"]
     expense_id = 100

@@ -1,9 +1,10 @@
 #here we need to have a reference to every single username and password
 import json
 from data_store import load_users
-users = load_users()
+
 
 def login(username, password):
+    users = load_users()
 
     for user in users:
         if user["username"].lower() == username.lower() and user["password"] == password:
