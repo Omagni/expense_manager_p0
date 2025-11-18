@@ -21,9 +21,24 @@ def generate_expense(user):
             expense_id = id
         expense_id += 1
 
-    amount = float(input("Please enter the dollar amount: "))
+    amount = -1
+    while True:
+        try:
+            amount_input = input("Please enter the dollar amount: $")
+            amount = float(amount_input)
+            if 1 <= amount <= 1000:
+                break
+            else:
+                print("Invalid input. Please enter a dollar amount between $1 - $1,000.")
+        except ValueError:
+            print("Invalid input. Please enter a numeric value.")
+
     amount = f"{amount:.2f}"
     desc = input("Please enter the description of the expense: ")
+    while(desc.strip() == "" or desc.isnumeric()):
+        print("Invalid input. Please enter a description for your expense.\n")
+        desc = input("Please enter the description of the expense: ")
+
     date = datetime.now(timezone.utc)
     formatted_date = date.strftime("%Y-%m-%dT%H:%M:%SZ")
     status = "pending"
