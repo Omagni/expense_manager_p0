@@ -1,7 +1,17 @@
 import json
 import pandas as pd
 import auth, view_history, create_expense, manage_reports
+import logging
 
+logging.basicConfig(
+    filename="revature_expense_manager.log",
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filemode='a',
+    force=True
+)
+
+logging.info("Starting the app")
 print("Welcome to the Revature Expense Manager!")
 print("             Login Page")
 
@@ -15,9 +25,11 @@ while(user_logged_in == False):
     user = auth.login(username, password) # save the user into the user variable. Can access anywhere now
 
     if user is None:
+        logging.warning(f"Failed login attempt with username: {username}")
         print("User not found. Try again")
 
     if user:
+        logging.info(f"User {username} logged in successfully")
         user_logged_in = True
 
 def print_menu():

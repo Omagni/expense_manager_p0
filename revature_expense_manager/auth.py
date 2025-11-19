@@ -1,6 +1,7 @@
 #here we need to have a reference to every single username and password
 import json
 from data_store import load_users
+import logging
 
 
 def login(username, password):
@@ -8,6 +9,7 @@ def login(username, password):
 
     for user in users:
         if user["username"].lower() == username.lower() and user["password"] == password:
+            logging.info(f"User '{username}' logged in successfully")
             print("User logged in")
             return user # we return the entire user here
         else:

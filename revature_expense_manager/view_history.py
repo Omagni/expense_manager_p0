@@ -1,5 +1,6 @@
 from data_store import load_expenses, load_users
 import pandas as pd
+import logging
                             #maybe I need to check if the list is empty
 
 # load all expenses with user_id only if expense is not pending
@@ -12,9 +13,11 @@ def view_expense_report(user):
             report_list.append(expense)
 
     if not report_list:
+        logging.info(f"User '{user.get('username', 'Unknown')}' viewed empty expense history")
         print("The list is empty")
         return
 
+    logging.info(f"User '{user.get('username', 'Unknown')}' viewed processed expense reports")
     df = pd.DataFrame(report_list)
     print(df.to_string(index=False))
 
@@ -26,8 +29,10 @@ def view_all_reports(user):
             report_list.append(expense)
 
     if not report_list:
+        logging.info(f"User '{user.get('username', 'Unknown')}' viewed empty expense report list")
         print("The list is empty")
         return
 
+    logging.info(f"User '{user.get('username', 'Unknown')}' viewed all expense reports")
     df = pd.DataFrame(report_list)
     print(df.to_string(index=False))

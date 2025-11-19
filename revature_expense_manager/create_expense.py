@@ -5,7 +5,7 @@
 #i don't need the user data to write to the json
 #i can just upload any correct data to the json
 #then i could filter it only when actually viewing history
-
+import logging
 from datetime import datetime, timezone
 from data_store import load_expenses, load_users, save_expenses
 
@@ -55,5 +55,6 @@ def generate_expense(user):
         "status": status
     }
 
+    logging.info(f"New expense created by user {user['username']} with id {expense_id} amount ${amount}")
     data.append(new_entry)
     save_expenses(data)
