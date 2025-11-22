@@ -15,10 +15,11 @@ def generate_expense(user):
 
     user_id = user["id"]
     expense_id = 100
-    #generate new expense id
-    for id in expenses:
-        if (id not in expenses):
-            expense_id = id
+    ids_found = []
+    for expense in expenses:
+        ids_found.append(expense['id'])
+
+    while expense_id in ids_found:
         expense_id += 1
 
     amount = -1

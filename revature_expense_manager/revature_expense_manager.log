@@ -84,3 +84,40 @@
 2025-11-21 19:55:08,720 - INFO - User 'brandon' requested to edit an expense report
 2025-11-21 19:55:30,749 - INFO - Expense report with ID 110 edited by user 'brandon'
 2025-11-21 19:55:35,379 - INFO - User 'brandon' requested to edit an expense report
+2025-11-21 20:03:13,442 - INFO - Starting the app
+2025-11-21 20:03:16,593 - INFO - User 'brandon' logged in successfully
+2025-11-21 20:03:16,593 - INFO - User brandon logged in successfully
+2025-11-21 20:03:18,762 - INFO - User 'brandon' requested to edit an expense report
+2025-11-21 20:03:49,214 - INFO - Expense report with ID 110 edited by user 'brandon'
+2025-11-21 20:03:51,218 - INFO - User 'brandon' requested to edit an expense report
+2025-11-21 20:04:13,061 - INFO - Expense report with ID 110 edited by user 'brandon'
+2025-11-21 20:04:28,338 - INFO - New expense created by user brandon with id 110 amount $432.00
+2025-11-21 20:04:39,329 - INFO - User 'brandon' viewed all expense reports
+2025-11-21 20:05:05,375 - INFO - New expense created by user brandon with id 111 amount $43.00
+2025-11-21 20:05:10,615 - INFO - User 'brandon' viewed all expense reports
+2025-11-21 20:05:18,990 - INFO - New expense created by user brandon with id 112 amount $432.00
+2025-11-21 20:05:22,008 - INFO - User 'brandon' viewed all expense reports
+2025-11-21 20:10:40,424 - INFO - Starting the app
+2025-11-21 20:10:43,313 - INFO - User 'brandon' logged in successfully
+2025-11-21 20:10:43,314 - INFO - User brandon logged in successfully
+2025-11-21 20:10:53,085 - INFO - User 'brandon' requested to edit an expense report
+2025-11-21 20:11:04,475 - INFO - Expense report with ID 112 edited by user 'brandon'
+2025-11-21 20:11:17,975 - INFO - New expense created by user brandon with id 100 amount $9.00
+2025-11-21 20:11:21,300 - INFO - User 'brandon' requested to edit an expense report
+2025-11-21 20:11:52,478 - INFO - Expense report with ID 109 edited by user 'brandon'
+2025-11-21 20:11:55,333 - INFO - User 'brandon' viewed all expense reports
+2025-11-21 20:12:12,857 - INFO - New expense created by user brandon with id 104 amount $46.00
+2025-11-21 20:12:16,449 - INFO - User 'brandon' viewed all expense reports
+2025-11-21 20:13:01,159 - INFO - Starting the app
+2025-11-21 20:13:03,605 - INFO - User 'brandon' logged in successfully
+2025-11-21 20:13:03,606 - INFO - User brandon logged in successfully
+2025-11-21 20:13:12,375 - INFO - New expense created by user brandon with id 106 amount $1.00
+2025-11-21 20:13:14,286 - INFO - User 'brandon' viewed all expense reports
+2025-11-21 20:13:27,549 - INFO - New expense created by user brandon with id 113 amount $4.00
+2025-11-21 20:13:29,537 - INFO - User 'brandon' viewed all expense reports
+2025-11-21 20:13:42,626 - INFO - New expense created by user brandon with id 114 amount $4.00
+2025-11-21 20:13:48,548 - INFO - User 'brandon' viewed all expense reports
+2025-11-21 20:14:02,859 - INFO - New expense created by user brandon with id 115 amount $4.00
+2025-11-21 20:14:06,352 - INFO - User 'brandon' viewed all expense reports
+2025-11-21 20:14:23,401 - INFO - New expense created by user brandon with id 116 amount $4.00
+2025-11-21 20:14:28,694 - INFO - User 'brandon' viewed all expense reports
