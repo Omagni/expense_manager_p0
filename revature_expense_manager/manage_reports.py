@@ -80,12 +80,44 @@ def edit_report(user):
     print(df.to_string(index=False))
     print("")
 
+    new_amount = -1
     while True:
         try:
-            id_to_edit = int(input("Select the report ID you would like to edit: "))
-            new_amount = float(input("Enter your new dollar amount: "))
-            new_desc = str(input("Enter your new description: "))
-            break
+            # Loop to validate ID
+            while True:
+                id_to_edit = int(input("Select the report ID you would like to edit: "))
+                found = False
+                for block in data:
+                    if id_to_edit == block["id"]:
+                        found = True
+                        break
+                if not found:
+                    print(f"{id_to_edit} is not available.")
+                else:
+                    break  # valid ID, exit ID loop
+
+            # Loop to validate new_amount
+            while True:
+                try:
+                    new_amount = float(input("Enter your new dollar amount: "))
+                    if 1 <= new_amount <= 1000:
+                        new_amount = f"{new_amount:.2f}"
+                        break  # valid amount, exit amount loop
+                    else:
+                        print("Invalid input. Please enter a dollar amount between $1 - $1,000.")
+                except ValueError:
+                    print("Invalid input. Please enter a numeric value.")
+
+            # Loop to validate description
+            while True:
+                new_desc = input("Enter your new description: ")
+                if new_desc.strip() == "" or new_desc.isnumeric() or len(new_desc) < 10 or len(new_desc) > 50:
+                    print("Invalid input. Description must be between 10 and 50 characters and not numeric or empty.\n")
+                else:
+                    break  # valid description
+
+            break  # all inputs valid, exit outermost loop
+
         except ValueError:
             print("Invalid input. Please try again.")
 

@@ -26,6 +26,7 @@ def generate_expense(user):
         try:
             amount_input = input("Please enter the dollar amount: $")
             amount = float(amount_input)
+
             if 1 <= amount <= 1000:
                 break
             else:
@@ -35,12 +36,12 @@ def generate_expense(user):
 
     amount = f"{amount:.2f}"
     desc = input("Please enter the description of the expense: ")
-    while(desc.strip() == "" or desc.isnumeric()):
-        print("Invalid input. Please enter a description for your expense.\n")
+    while(desc.strip() == "" or desc.isnumeric() or len(desc) < 10 or len(desc) > 50):
+        print("Invalid input. Description must be between 10 and 50 characters and not numeric or empty.\n")
         desc = input("Please enter the description of the expense: ")
 
     date = datetime.now(timezone.utc)
-    formatted_date = date.strftime("%Y-%m-%dT%H:%M:%SZ")
+    formatted_date = date.strftime("%Y-%m-%d")
     status = "pending"
 
     #load current json right now
