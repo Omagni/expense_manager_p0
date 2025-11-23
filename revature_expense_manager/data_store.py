@@ -1,6 +1,11 @@
 import logging
 import json
 
+#*******************************************************************
+#THIS IS AN OLD MODULE THAT USED JSON TO IMPORT DATA INTO A DICT
+#THIS HAS BEEN UPDATED TO db_manager.py WHERE WE TURN DATABASE ITEMS
+#INTO A DICT
+#*******************************************************************
 USERS_FILE = "user_info.json"
 EXPENSE_FILE = "expense_reports.json"
 

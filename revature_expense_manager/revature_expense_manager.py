@@ -1,7 +1,11 @@
-import json
-import pandas as pd
+#import json
+#import pandas as pd
 import auth, view_history, create_expense, manage_reports
 import logging
+
+#this project no longer uses json files, or data_store.py
+#everything is called from the database
+#commented code (in other modules) are artifacts from previous implementations, kept for reference.
 
 logging.basicConfig(
     filename="revature_expense_manager.log",

@@ -1,129 +1,113 @@
-from data_store import load_expenses, load_users, save_expenses
-import pandas as pd
 import logging
-import view_history
+import pandas as pd
+import db_manager
+import sqlite3
 
-#i will upload the specified users pending reports, handle the actions, and save the new data to json
+# DELETE REPORT ---------------------------------------------------------
 
-#load everyone's info because I will overwrite the entire file
 def delete_report(user):
     logging.info(f"User {user['username']} requested to delete a report")
-    expenses = load_expenses()
-    users = load_users()
-    print(user)
-    data = []
-    #display their info
-    for expense in expenses:
-        data.append(expense)
 
-    user_data_list = []
-    #load on the specific users pending reports
-    for block in data:
-        if(user["id"] == block["user_id"] and block["status"] == "pending"):
-            user_data_list.append(block)
+    # Load ONLY this user's pending reports from DB
+    pending = load_pending_reports(user["id"])
 
-    #read the users reports to them. pending only
-    print("\n" * 5)
+    if not pending:
+        print("\nNo pending reports to delete.\n")
+        return
+
+    print("\n" * 3)
     print("Your pending reports:")
-
-    df = pd.DataFrame(user_data_list)
-    df = df.drop(columns=["user_id"])
-    print(df.to_string(index=False))
+    df = pd.DataFrame(pending)
+    print(df.drop(columns=["user_id"]).to_string(index=False))
     print("")
 
+    # Ask ID
     while True:
         try:
             id_to_delete = int(input("Select the report ID you would like to delete: "))
-            break
+            if any(r["id"] == id_to_delete for r in pending):
+                break
+            print("Invalid ID. Choose an ID from the list.")
         except ValueError:
-            print("Invalid. Enter a report ID")
+            print("Enter a valid number.")
 
-    found = False
-    #loop entire json, take out specified data by id, overwrite
-    for block in data:
-        if(id_to_delete == block["id"]):
-            logging.info(f"Expense report with ID {id_to_delete} deleted by user '{user.get('username', 'Unknown')}'")
-            data.remove(block)
-            found = True
-            break
+    # Delete from SQL
+    conn = db_manager.get_conn()
+    cur = conn.cursor()
+    cur.execute("DELETE FROM expense_reports WHERE id = ? AND user_id = ?", (id_to_delete, user["id"]))
+    conn.commit()
+    conn.close()
 
-    if not found:
-        logging.warning(
-            f"Delete attempt failed: report ID {id_to_delete} not found by user '{user.get('username', 'Unknown')}'")
-        print("ID not found")
+    logging.info(f"Expense report ID {id_to_delete} deleted by user {user['username']}")
+    print("\nReport deleted successfully.\n")
 
-    #data removed from entire list. now overwrite
-    save_expenses(data)
+# EDIT REPORT ----------------------------------------------------------
 
 def edit_report(user):
-    logging.info(f"User '{user.get('username', 'Unknown')}' requested to edit an expense report")
-    expenses = load_expenses()
-    users = load_users()
-    print(user)
-    data = []
-    for expense in expenses:
-        data.append(expense)
+    logging.info(f"User {user['username']} requested to edit a report")
 
-    user_data_list = []
-    for block in data:
-        if(user["id"] == block["user_id"] and block["status"] == "pending"):
-            user_data_list.append(block)
+    pending = db_manager.load_pending_reports(user["id"])
 
-    print("\n" * 5)
+    if not pending:
+        print("\nNo pending reports to edit.\n")
+        return
+
+    print("\n" * 3)
     print("Your pending reports:")
-
-    df = pd.DataFrame(user_data_list)
-    df = df.drop(columns=["user_id"])
-    print(df.to_string(index=False))
+    df = pd.DataFrame(pending)
+    print(df.drop(columns=["user_id"]).to_string(index=False))
     print("")
 
+    # Choose ID
     while True:
-        # Validate report ID
-        while True:
-            try:
-                id_to_edit = int(input("Select the report ID you would like to edit: "))
-                found = any(block["id"] == id_to_edit for block in data)
-                if not found:
-                    print(f"{id_to_edit} is not available.")
-                else:
-                    break
-            except ValueError:
-                print("Invalid input. Please enter a valid integer.")
-
-        # Validate new amount
-        while True:
-            try:
-                new_amount = float(input("Enter your new dollar amount: "))
-                if 1 <= new_amount <= 1000:
-                    new_amount = f"{new_amount:.2f}"
-                    break
-                else:
-                    print("Invalid input. Please enter a dollar amount between $1 - $1,000.")
-            except ValueError:
-                print("Invalid input. Please enter a numeric value.")
-
-        # Validate description
-        while True:
-            new_desc = input("Enter your new description: ")
-            if new_desc.strip() == "" or new_desc.isnumeric() or len(new_desc) < 10 or len(new_desc) > 50:
-                print("Invalid input. Description must be between 10 and 50 characters and not numeric or empty.\n")
-            else:
+        try:
+            id_to_edit = int(input("Select the report ID you want to edit: "))
+            if any(r["id"] == id_to_edit for r in pending):
                 break
+            print("Invalid ID. Try again.")
+        except ValueError:
+            print("Enter a valid number.")
 
-        break  # exit the main while loop after all validations
+    # New amount
+    while True:
+        try:
+            new_amount = float(input("Enter new dollar amount: "))
+            if 1 <= new_amount <= 1000:
+                new_amount = f"{new_amount:.2f}"
+                break
+            print("Amount must be between $1 - $1,000.")
+        except ValueError:
+            print("Enter a valid number.")
 
-    # Update and save
-    found = False
-    for block in data:
-        if block["id"] == id_to_edit:
-            logging.info(f"Expense report with ID {id_to_edit} edited by user '{user.get('username', 'Unknown')}'")
-            block["amount"] = new_amount
-            block["description"] = new_desc
-            found = True
+    # New description
+    while True:
+        new_desc = input("Enter new description: ")
+        if new_desc.strip() and not new_desc.isnumeric() and 10 <= len(new_desc) <= 50:
             break
+        print("Description must be 10–50 chars, not empty, not numeric.")
 
-    if not found:
-        logging.warning(f"Edit attempt failed: report ID {id_to_edit} not found by user '{user.get('username', 'Unknown')}'")
-        print("ID not found")
+    # Update in SQL
+    conn = db_manager.get_conn()
+    cur = conn.cursor()
+    cur.execute("""
+        UPDATE expense_reports
+        SET amount = ?, description = ?
+        WHERE id = ? AND user_id = ?
+    """, (new_amount, new_desc, id_to_edit, user["id"]))
+    conn.commit()
+    conn.close()
 
-    save_expenses(data)
+    logging.info(f"Expense report ID {id_to_edit} edited by user {user['username']}")
+    print("\nReport updated successfully.\n")
+
+# def load_pending_reports(user_id):
+#     conn = db_manager.get_conn()
+#     conn.row_factory = sqlite3.Row
+#     cur = conn.cursor()
+#     cur.execute("""
+#         SELECT * FROM expense_reports
+#         WHERE user_id = ? AND status = 'pending'
+#     """, (user_id,))
+#     rows = cur.fetchall()
+#     conn.close()
+#     return [dict(r) for r in rows]

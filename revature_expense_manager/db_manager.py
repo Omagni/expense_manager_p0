@@ -1,9 +1,75 @@
 import sqlite3
 import os
-import logging
 
-BASE_DIR = os.path.dirname(__file__)  # python folder
-DB_FILE = os.path.abspath(os.path.join(BASE_DIR, "..", "sql.db"))
+
+BASE_DIR = os.path.dirname(__file__)
+DB_FILE = os.path.abspath(os.path.join(BASE_DIR, "..", "revature_expense.db"))
 
 def get_conn():
     return sqlite3.connect(DB_FILE)
+
+def load_user_by_username(username):
+    conn = get_conn()
+    conn.row_factory = sqlite3.Row  # Access columns by name
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM user_info WHERE username = ?", (username,))
+    row = cur.fetchone()
+    conn.close()
+    if row:
+        return dict(row)
+    return None
+
+def load_expenses_for_user(user_id):
+    conn = get_conn()
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM expense_reports WHERE user_id = ?", (user_id,))
+    rows = cur.fetchall()
+    conn.close()
+    return [dict(row) for row in rows]
+
+def load_processed_expenses_for_user(user_id):
+    conn = get_conn()
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT * FROM expense_reports
+        WHERE user_id = ? AND status != 'pending'
+    """, (user_id,))
+    rows = cur.fetchall()
+    conn.close()
+    return [dict(row) for row in rows]
+
+def load_pending_reports(user_id):
+    conn = get_conn()
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT * FROM expense_reports
+        WHERE user_id = ? AND status = 'pending'
+    """, (user_id,))
+    rows = cur.fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
+
+#loads every single expense in data
+def load_all_expenses():
+    conn = get_conn()
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM expense_reports")
+    rows = cur.fetchall()
+    conn.close()
+    return [dict(row) for row in rows]
+
+
+def insert_expense(expense):
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute("""
+        INSERT INTO expense_reports (id, user_id, amount, description, date, status)
+        VALUES (?, ?, ?, ?, ?, ?)
+    """, (expense['id'], expense['user_id'], expense['amount'], expense['description'], expense['date'], expense['status']))
+    conn.commit()
+    conn.close()
+

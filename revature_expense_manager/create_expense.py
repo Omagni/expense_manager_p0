@@ -7,13 +7,16 @@
 #then i could filter it only when actually viewing history
 import logging
 from datetime import datetime, timezone
-from data_store import load_expenses, load_users, save_expenses
+#from data_store import load_expenses, load_users, save_expenses   ----- OLD JSON DON'T NEED
+import db_manager
 
 def generate_expense(user):
-    expenses = load_expenses()
-    users = load_users()
+    #expenses = load_expenses() OLD JSON
+    #users = load_users() OLD JSON
 
     user_id = user["id"]
+    expenses = db_manager.load_all_expenses() #load all expenses so we don't duplicate or crash an id
+
     expense_id = 100
     ids_found = []
     for expense in expenses:
@@ -22,10 +25,10 @@ def generate_expense(user):
     while expense_id in ids_found:
         expense_id += 1
 
-    amount = -1
+    #amount = -1
     while True:
         try:
-            amount_input = input("Please enter the dollar amount: $")
+            amount_input = float("Please enter the dollar amount: $")
             amount = float(amount_input)
 
             if 1 <= amount <= 1000:
@@ -37,7 +40,7 @@ def generate_expense(user):
 
     amount = f"{amount:.2f}"
     desc = input("Please enter the description of the expense: ")
-    while(desc.strip() == "" or desc.isnumeric() or len(desc) < 10 or len(desc) > 50):
+    while(desc.strip() and not desc.isnumeric() and 10 <= len(desc) <= 50):
         print("Invalid input. Description must be between 10 and 50 characters and not numeric or empty.\n")
         desc = input("Please enter the description of the expense: ")
 
@@ -46,7 +49,7 @@ def generate_expense(user):
     status = "pending"
 
     #load current json right now
-    data = load_expenses()
+    #data = load_expenses() OLD JSON DON'T NEED
 
     new_entry = {
         "id": expense_id,
@@ -58,5 +61,7 @@ def generate_expense(user):
     }
 
     logging.info(f"New expense created by user {user['username']} with id {expense_id} amount ${amount}")
-    data.append(new_entry)
-    save_expenses(data)
+
+    db_manager.insert_expense(new_entry)
+    #data.append(new_entry) OLD JSON
+    #save_expenses(data)
