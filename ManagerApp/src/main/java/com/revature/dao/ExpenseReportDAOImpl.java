@@ -11,7 +11,11 @@ import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
 
+import java.util.logging.Logger;
+
 public class ExpenseReportDAOImpl implements ExpenseReportDAO{
+
+    private static final Logger logger = Logger.getLogger(ExpenseReportDAOImpl.class.getName());
 
     // connect to DB
     private static final String DB_URL;
@@ -19,9 +23,12 @@ public class ExpenseReportDAOImpl implements ExpenseReportDAO{
         String baseDir = System.getProperty("user.dir");
         Path dbPath = Paths.get(baseDir, "..", "revature_expense.db").toAbsolutePath().normalize();
         DB_URL = "jdbc:sqlite:" + dbPath.toString();
+        logger.info("Database URL set to: " + DB_URL);
     }
 
     public List<ExpenseReport> getPendingExpenseReports(){
+
+        logger.info("Fetching pending expense reports...");
 
         List<Integer> expenseIds = new ArrayList<>();
         List<ExpenseReport> expenseReports = new ArrayList<>();
@@ -32,10 +39,13 @@ public class ExpenseReportDAOImpl implements ExpenseReportDAO{
 
         // approval attempt
         try (Connection conn = DriverManager.getConnection(DB_URL);
+             //pass query
              PreparedStatement pstmt = conn.prepareStatement(approvalQuery);
              ResultSet rs = pstmt.executeQuery()) {
 
+            // finds all records
             while (rs.next()) {
+                //grab all expense report ids
                 expenseIds.add(rs.getInt("expense_id"));
             }
 
@@ -51,6 +61,7 @@ public class ExpenseReportDAOImpl implements ExpenseReportDAO{
 
         // expense_report attempt
         try (Connection conn = DriverManager.getConnection(DB_URL);
+             // now that we have ids, go thru expense reports table
              PreparedStatement pstmt = conn.prepareStatement(expenseQuery)) {
 
             for (int expenseId : expenseIds) {
@@ -58,6 +69,7 @@ public class ExpenseReportDAOImpl implements ExpenseReportDAO{
                 pstmt.setInt(1, expenseId);
                 try (ResultSet rs = pstmt.executeQuery()) {
 
+                    // find all records based on ids
                     while (rs.next()) {
                         ExpenseReport report = new ExpenseReport();
                         report.setId(rs.getInt("id"));
@@ -73,6 +85,7 @@ public class ExpenseReportDAOImpl implements ExpenseReportDAO{
             e.printStackTrace();
         }
 
+        // list of expense report records
         return expenseReports;
     }
 
