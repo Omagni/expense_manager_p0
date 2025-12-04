@@ -28,7 +28,7 @@ def generate_expense(user):
     #amount = -1
     while True:
         try:
-            amount_input = float("Please enter the dollar amount: $")
+            amount_input = input("Please enter the dollar amount: $")
             amount = float(amount_input)
 
             if 1 <= amount <= 1000:
@@ -40,7 +40,7 @@ def generate_expense(user):
 
     amount = f"{amount:.2f}"
     desc = input("Please enter the description of the expense: ")
-    while(desc.strip() and not desc.isnumeric() and 10 <= len(desc) <= 50):
+    while not (desc.strip() and not desc.isnumeric() and 10 <= len(desc) <= 50):
         print("Invalid input. Description must be between 10 and 50 characters and not numeric or empty.\n")
         desc = input("Please enter the description of the expense: ")
 

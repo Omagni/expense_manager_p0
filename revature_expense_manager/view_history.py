@@ -2,6 +2,7 @@
 import pandas as pd
 import logging
 import db_manager
+from tabulate import tabulate
                             #maybe I need to check if the list is empty
 
 # load all expenses with user_id only if expense is not pending
@@ -22,7 +23,8 @@ def view_expense_report(user):
 
     logging.info(f"User '{user.get('username', 'Unknown')}' viewed processed expense reports")
     df = pd.DataFrame(report_list)
-    print(df.to_string(index=False))
+    #print(df.to_string(index=False))
+    print(tabulate(df, headers='keys', tablefmt='grid', showindex=False))
 
 def view_all_reports(user):
     #expenses = load_expenses() old json
@@ -39,4 +41,5 @@ def view_all_reports(user):
 
     logging.info(f"User '{user.get('username', 'Unknown')}' viewed all expense reports")
     df = pd.DataFrame(report_list)
-    print(df.to_string(index=False))
+    #print(df.to_string(index=False))
+    print(tabulate(df, headers='keys', tablefmt='grid', showindex=False))

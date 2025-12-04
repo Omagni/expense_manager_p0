@@ -174,3 +174,141 @@
 2025-11-22 22:36:01,581 - INFO - User brandon requested to edit a report
 2025-11-22 22:36:13,043 - INFO - Expense report ID 116 edited by user brandon
 2025-11-22 22:36:16,403 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:08:16,481 - INFO - Starting the app
+2025-11-28 22:08:19,175 - INFO - User 'brandon' logged in successfully
+2025-11-28 22:08:19,175 - INFO - User brandon logged in successfully
+2025-11-28 22:12:26,235 - INFO - Starting the app
+2025-11-28 22:12:28,689 - WARNING - Failed login attempt for username: brandon
+2025-11-28 22:12:28,689 - WARNING - Failed login attempt with username: brandon
+2025-11-28 22:12:34,136 - INFO - User 'brandon' logged in successfully
+2025-11-28 22:12:34,136 - INFO - User brandon logged in successfully
+2025-11-28 22:20:14,893 - INFO - Starting the app
+2025-11-28 22:20:17,183 - INFO - User 'brandon' logged in successfully
+2025-11-28 22:20:17,183 - INFO - User brandon logged in successfully
+2025-11-28 22:20:35,392 - INFO - New expense created by user brandon with id 100 amount $666.00
+2025-11-28 22:20:41,418 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:21:28,952 - INFO - User brandon requested to edit a report
+2025-11-28 22:21:42,965 - INFO - Expense report ID 100 edited by user brandon
+2025-11-28 22:21:53,129 - INFO - User brandon requested to delete a report
+2025-11-28 22:24:11,390 - INFO - Starting the app
+2025-11-28 22:24:15,120 - INFO - User 'brandon' logged in successfully
+2025-11-28 22:24:15,120 - INFO - User brandon logged in successfully
+2025-11-28 22:24:17,872 - INFO - User brandon requested to delete a report
+2025-11-28 22:24:23,340 - INFO - Expense report ID 100 deleted by user brandon
+2025-11-28 22:33:31,818 - INFO - Starting the app
+2025-11-28 22:33:34,228 - INFO - User 'brandon' logged in successfully
+2025-11-28 22:33:34,228 - INFO - User brandon logged in successfully
+2025-11-28 22:33:37,113 - INFO - User 'brandon' viewed processed expense reports
+2025-11-28 22:34:16,484 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:35:25,145 - INFO - New expense created by user brandon with id 100 amount $666.00
+2025-11-28 22:35:29,972 - INFO - User brandon requested to edit a report
+2025-11-28 22:35:53,341 - INFO - Expense report ID 100 edited by user brandon
+2025-11-28 22:35:56,335 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:36:12,936 - INFO - New expense created by user brandon with id 101 amount $888.00
+2025-11-28 22:36:19,730 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:36:32,914 - INFO - User brandon requested to delete a report
+2025-11-28 22:36:43,219 - INFO - Expense report ID 100 deleted by user brandon
+2025-11-28 22:36:50,918 - INFO - New expense created by user brandon with id 100 amount $666.00
+2025-11-28 22:36:53,983 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:38:06,141 - INFO - New expense created by user brandon with id 104 amount $777.00
+2025-11-28 22:38:11,448 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:38:23,967 - INFO - User brandon requested to delete a report
+2025-11-28 22:38:30,663 - INFO - Expense report ID 100 deleted by user brandon
+2025-11-28 22:38:40,343 - INFO - New expense created by user brandon with id 100 amount $666.00
+2025-11-28 22:38:44,402 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:51:59,828 - INFO - Starting the app
+2025-11-28 22:52:02,469 - INFO - User 'brandon' logged in successfully
+2025-11-28 22:52:02,470 - INFO - User brandon logged in successfully
+2025-11-28 22:52:05,341 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:52:45,845 - INFO - Starting the app
+2025-11-28 22:52:48,202 - INFO - User 'brandon' logged in successfully
+2025-11-28 22:52:48,202 - INFO - User brandon logged in successfully
+2025-11-28 22:52:49,333 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:52:56,236 - INFO - User brandon requested to delete a report
+2025-11-28 22:53:06,367 - INFO - Starting the app
+2025-11-28 22:53:09,623 - INFO - User 'brandon' logged in successfully
+2025-11-28 22:53:09,624 - INFO - User brandon logged in successfully
+2025-11-28 22:53:11,220 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:53:50,980 - INFO - Starting the app
+2025-11-28 22:53:53,850 - INFO - User 'brandon' logged in successfully
+2025-11-28 22:53:53,850 - INFO - User brandon logged in successfully
+2025-11-28 22:53:55,745 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:54:08,505 - INFO - New expense created by user brandon with id 100 amount $666.00
+2025-11-28 22:54:14,121 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:54:42,894 - INFO - User brandon requested to delete a report
+2025-11-28 22:54:44,249 - INFO - Expense report ID 100 deleted by user brandon
+2025-11-28 22:54:46,492 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:54:52,695 - INFO - User 'brandon' viewed processed expense reports
+2025-11-28 22:55:05,467 - INFO - New expense created by user brandon with id 100 amount $666.00
+2025-11-28 22:55:10,311 - INFO - User brandon requested to edit a report
+2025-11-28 22:55:18,049 - INFO - Expense report ID 100 edited by user brandon
+2025-11-28 22:55:24,189 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:55:34,240 - INFO - User brandon requested to delete a report
+2025-11-28 22:55:37,345 - INFO - Expense report ID 101 deleted by user brandon
+2025-11-28 22:55:45,519 - INFO - User brandon requested to delete a report
+2025-11-28 22:55:46,906 - INFO - Expense report ID 100 deleted by user brandon
+2025-11-28 22:55:55,180 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:56:10,982 - INFO - User brandon requested to delete a report
+2025-11-28 22:56:15,556 - INFO - Expense report ID 104 deleted by user brandon
+2025-11-28 22:56:20,784 - INFO - User 'brandon' viewed all expense reports
+2025-11-28 22:56:27,470 - INFO - User 'brandon' viewed all expense reports
+2025-11-29 19:05:33,531 - INFO - Starting the app
+2025-11-29 19:05:36,280 - INFO - User 'brandon' logged in successfully
+2025-11-29 19:05:36,280 - INFO - User brandon logged in successfully
+2025-11-29 19:05:37,737 - INFO - User 'brandon' viewed all expense reports
+2025-11-29 19:05:48,227 - INFO - Starting the app
+2025-11-29 19:05:53,483 - INFO - User 'brandon' logged in successfully
+2025-11-29 19:05:53,484 - INFO - User brandon logged in successfully
+2025-11-29 19:05:56,018 - INFO - User 'brandon' viewed all expense reports
+2025-11-30 22:29:29,415 - INFO - Starting the app
+2025-11-30 22:29:32,048 - INFO - User 'brandon' logged in successfully
+2025-11-30 22:29:32,048 - INFO - User brandon logged in successfully
+2025-11-30 22:29:43,012 - INFO - New expense created by user brandon with id 100 amount $456.00
+2025-11-30 22:41:16,645 - INFO - Starting the app
+2025-11-30 22:41:22,440 - INFO - User 'alice' logged in successfully
+2025-11-30 22:41:22,440 - INFO - User alice logged in successfully
+2025-11-30 22:42:19,066 - INFO - New expense created by user alice with id 101 amount $22.00
+2025-11-30 22:42:44,784 - INFO - New expense created by user alice with id 104 amount $999.00
+2025-11-30 22:43:30,853 - INFO - New expense created by user alice with id 111 amount $800.00
+2025-11-30 22:43:46,502 - INFO - New expense created by user alice with id 112 amount $99.00
+2025-11-30 22:44:34,693 - INFO - New expense created by user alice with id 113 amount $54.62
+2025-12-01 15:30:42,386 - INFO - Starting the app
+2025-12-01 15:30:44,785 - INFO - User 'brandon' logged in successfully
+2025-12-01 15:30:44,785 - INFO - User brandon logged in successfully
+2025-12-01 15:30:46,843 - INFO - User 'brandon' viewed processed expense reports
+2025-12-01 15:30:57,158 - INFO - User brandon requested to edit a report
+2025-12-01 15:31:05,892 - INFO - User 'brandon' viewed all expense reports
+2025-12-01 15:31:14,175 - INFO - User brandon requested to edit a report
+2025-12-01 15:31:36,755 - INFO - User brandon requested to edit a report
+2025-12-01 15:32:08,531 - INFO - Starting the app
+2025-12-01 15:32:13,574 - INFO - User 'alice' logged in successfully
+2025-12-01 15:32:13,574 - INFO - User alice logged in successfully
+2025-12-01 15:32:15,478 - INFO - User 'alice' viewed all expense reports
+2025-12-01 15:32:33,099 - INFO - Starting the app
+2025-12-01 15:32:35,629 - INFO - User 'brandon' logged in successfully
+2025-12-01 15:32:35,629 - INFO - User brandon logged in successfully
+2025-12-01 15:32:36,284 - INFO - User 'brandon' viewed all expense reports
+2025-12-01 15:32:42,115 - INFO - User brandon requested to edit a report
+2025-12-01 15:32:51,875 - INFO - Starting the app
+2025-12-01 15:32:58,225 - INFO - User 'alice' logged in successfully
+2025-12-01 15:32:58,225 - INFO - User alice logged in successfully
+2025-12-01 15:32:59,852 - INFO - User alice requested to edit a report
+2025-12-01 15:36:33,528 - INFO - Starting the app
+2025-12-01 15:36:37,499 - INFO - User 'brandon' logged in successfully
+2025-12-01 15:36:37,500 - INFO - User brandon logged in successfully
+2025-12-01 15:36:39,205 - INFO - User 'brandon' viewed all expense reports
+2025-12-01 15:37:01,222 - INFO - User 'brandon' viewed processed expense reports
+2025-12-01 15:37:06,913 - INFO - User 'brandon' viewed all expense reports
+2025-12-01 15:37:15,250 - INFO - Starting the app
+2025-12-01 15:37:19,601 - INFO - User 'alice' logged in successfully
+2025-12-01 15:37:19,602 - INFO - User alice logged in successfully
+2025-12-01 15:37:21,572 - INFO - User 'alice' viewed all expense reports
+2025-12-01 15:38:25,276 - INFO - Starting the app
+2025-12-01 15:38:30,089 - INFO - User 'brandon' logged in successfully
+2025-12-01 15:38:30,089 - INFO - User brandon logged in successfully
+2025-12-01 15:38:47,988 - INFO - New expense created by user brandon with id 114 amount $11.00
+2025-12-01 15:38:57,149 - INFO - User 'brandon' viewed all expense reports
+2025-12-02 19:25:57,946 - INFO - Starting the app
+2025-12-02 19:26:00,184 - INFO - User 'brandon' logged in successfully
+2025-12-02 19:26:00,184 - INFO - User brandon logged in successfully
+2025-12-02 19:26:03,151 - INFO - User 'brandon' viewed all expense reports

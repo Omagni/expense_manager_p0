@@ -2,14 +2,12 @@ import logging
 import pandas as pd
 import db_manager
 import sqlite3
-
-# DELETE REPORT ---------------------------------------------------------
+from tabulate import tabulate
 
 def delete_report(user):
     logging.info(f"User {user['username']} requested to delete a report")
 
-    # Load ONLY this user's pending reports from DB
-    pending = load_pending_reports(user["id"])
+    pending = db_manager.load_pending_reports(user["id"])
 
     if not pending:
         print("\nNo pending reports to delete.\n")
@@ -18,10 +16,9 @@ def delete_report(user):
     print("\n" * 3)
     print("Your pending reports:")
     df = pd.DataFrame(pending)
-    print(df.drop(columns=["user_id"]).to_string(index=False))
+    print(tabulate(df.drop(columns=["user_id"]), headers='keys', tablefmt='grid', showindex=False))
     print("")
 
-    # Ask ID
     while True:
         try:
             id_to_delete = int(input("Select the report ID you would like to delete: "))
@@ -31,17 +28,21 @@ def delete_report(user):
         except ValueError:
             print("Enter a valid number.")
 
-    # Delete from SQL
     conn = db_manager.get_conn()
     cur = conn.cursor()
+
+    # Delete related approvals first
+    cur.execute("DELETE FROM approvals WHERE expense_id = ?", (id_to_delete,))
+
+    # Then delete the expense report
     cur.execute("DELETE FROM expense_reports WHERE id = ? AND user_id = ?", (id_to_delete, user["id"]))
+
     conn.commit()
     conn.close()
 
     logging.info(f"Expense report ID {id_to_delete} deleted by user {user['username']}")
     print("\nReport deleted successfully.\n")
 
-# EDIT REPORT ----------------------------------------------------------
 
 def edit_report(user):
     logging.info(f"User {user['username']} requested to edit a report")
@@ -55,10 +56,10 @@ def edit_report(user):
     print("\n" * 3)
     print("Your pending reports:")
     df = pd.DataFrame(pending)
-    print(df.drop(columns=["user_id"]).to_string(index=False))
+    #print(df.drop(columns=["user_id"]).to_string(index=False))
+    print(tabulate(df.drop(columns=["user_id"]), headers='keys', tablefmt='grid', showindex=False))
     print("")
 
-    # Choose ID
     while True:
         try:
             id_to_edit = int(input("Select the report ID you want to edit: "))
@@ -68,7 +69,6 @@ def edit_report(user):
         except ValueError:
             print("Enter a valid number.")
 
-    # New amount
     while True:
         try:
             new_amount = float(input("Enter new dollar amount: "))
@@ -79,14 +79,12 @@ def edit_report(user):
         except ValueError:
             print("Enter a valid number.")
 
-    # New description
     while True:
         new_desc = input("Enter new description: ")
         if new_desc.strip() and not new_desc.isnumeric() and 10 <= len(new_desc) <= 50:
             break
         print("Description must be 10–50 chars, not empty, not numeric.")
 
-    # Update in SQL
     conn = db_manager.get_conn()
     cur = conn.cursor()
     cur.execute("""
